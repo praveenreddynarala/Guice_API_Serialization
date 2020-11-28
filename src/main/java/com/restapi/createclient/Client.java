@@ -6,7 +6,9 @@ import io.restassured.specification.RequestSpecification;
 
 public interface Client {
 
+    void setRequestProperties(RequestProperties requestProperties);
     RequestSpecification getResponseSpecification();
-    Response getRequestResponse(RequestProperties requestProperties);
+//    Response getRequest(RequestProperties requestProperties);
+    Response getRequest();
 
 }

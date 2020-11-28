@@ -11,20 +11,14 @@ public class GetRequest {
 
     private Client client;
 
-    public void setRequestProperties(RequestProperties requestProperties) {
-        this.requestProperties = requestProperties;
-    }
-
-    private RequestProperties requestProperties;
-
     @Inject
-    public GetRequest(Client client, RequestProperties requestProperties) {
+    public GetRequest(Client client) {
         this.client = client;
-        this.requestProperties = requestProperties;
     }
 
-    public Response getResponse(RequestProperties requestProperties){
-        return client.getRequestResponse(requestProperties);
+    public Response getRequest(RequestProperties requestProperties){
+        client.setRequestProperties(requestProperties);
+        return client.getRequest();
     }
 
 }

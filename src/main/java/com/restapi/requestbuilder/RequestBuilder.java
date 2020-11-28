@@ -16,16 +16,6 @@ import java.util.Map;
 
 public class RequestBuilder implements Client {
 
-    private Map<String, String> reqHeaders = new HashMap<>();
-    private String reqstHeaders;
-    private String reqBody;
-    private String baseUrl;
-    private String userName;
-    private String psw;
-    private String token;
-    private String secretKey;
-    private String clientId;
-
     private RequestSpecBuilder requestSpecBuilder;
     private RequestSpecification requestSpecification;
 
@@ -56,86 +46,6 @@ public class RequestBuilder implements Client {
 //        this.requestProperties = requestProperties;
 //    }
 
-    public Map<String, String> getReqHeaders() {
-        return reqHeaders;
-    }
-
-    public void setReqHeaders(String headersString) {
-        if(headersString == null || headersString.trim() ==""){
-            return;
-        }
-        String[] headerStr = headersString.trim().split(",");
-        String[] headerEntry = null;
-        for (int i = 0; i < headerStr.length; i++){
-            headerEntry = headerStr[i].trim().split(":");
-            if(headerEntry.length != 2){
-                continue;
-            }
-            this.reqHeaders.put(headerEntry[0].trim(), headerEntry[1].trim());
-        }
-    }
-
-    public String getReqBody() {
-        return reqBody;
-    }
-
-    public void setReqBody(String reqBody) {
-        if (reqBody == null) {
-            reqBody = "";
-        }
-        this.reqBody = reqBody.trim();
-    }
-
-    public String getBaseUrl() {
-        return baseUrl;
-    }
-
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPsw() {
-        return psw;
-    }
-
-    public void setPsw(String psw) {
-        this.psw = psw;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getSecretKey() {
-        return secretKey;
-    }
-
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
-    }
-
-    public String getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-
-//    public RequestBuilder(RequestProperties requestProperties){ this.requestProperties = requestProperties; }
-
     public RequestSpecBuilder getRequestSpecBuilder() {
         requestSpecBuilder = new RequestSpecBuilder();
 
@@ -144,6 +54,11 @@ public class RequestBuilder implements Client {
             requestSpecBuilder.setBody(this.requestProperties.getReqBody());
 
         return requestSpecBuilder;
+    }
+
+    @Override
+    public void setRequestProperties(RequestProperties requestProperties) {
+        this.requestProperties = requestProperties;
     }
 
     @Override
@@ -160,8 +75,7 @@ public class RequestBuilder implements Client {
     }
 
     @Override
-    public Response getRequestResponse(RequestProperties requestProperties) {
-        this.requestProperties = requestProperties;
+    public Response getRequest() {
         return getResponseSpecification().get(requestProperties.getBaseUrl());
     }
 }
