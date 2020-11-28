@@ -10,12 +10,21 @@ public class RequestProperties{
 
     private Map<String, String> reqHeaders = new HashMap<>();
     private String reqBody;
+    private String baseUrl;
     private String urlEndPoint;
     private String userName;
     private String psw;
     private String token;
     private String secretKey;
     private String clientId;
+
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
 
     public Map<String, String> getReqHeaders() {
         return reqHeaders;

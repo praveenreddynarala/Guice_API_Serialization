@@ -9,10 +9,6 @@ public class RequestModule extends AbstractModule {
 
     @Override
     public void configure(){
-//        binder().install(new FactoryModuleBuilder()
-//        .implement(Client.class, RequestBuilder.class)
-//        .build(RequestPropertiesFactory.class));
-
         bind(String.class)
                 .annotatedWith(Names.named("Server Url"))
         .toInstance("https://reqres.in");
