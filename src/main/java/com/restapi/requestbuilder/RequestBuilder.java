@@ -1,7 +1,5 @@
 package com.restapi.requestbuilder;
 
-import com.google.inject.assistedinject.Assisted;
-import com.google.inject.assistedinject.AssistedInject;
 import com.restapi.createclient.Client;
 import static io.restassured.RestAssured.given;
 
@@ -11,40 +9,16 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Map;
+import javax.inject.Named;
 
 public class RequestBuilder implements Client {
 
+    @Inject @Named("Server Url")
+    private String serverUrl;
     private RequestSpecBuilder requestSpecBuilder;
     private RequestSpecification requestSpecification;
 
     private RequestProperties requestProperties;
-
-//    @AssistedInject
-//    public RequestBuilder(
-//            @Assisted String reqHeaders,
-//            @Assisted String reqBody,
-//            @Assisted String baseUrl,
-//            @Assisted String userName,
-//            @Assisted String psw,
-//            @Assisted String token,
-//            @Assisted String secretKey,
-//            @Assisted String clientId){
-//        this.reqstHeaders = reqHeaders;
-//        this.baseUrl = baseUrl;
-//        this.reqBody = reqBody;
-//        this.userName = userName;
-//        this.psw = psw;
-//        this.token = token;
-//        this.secretKey = secretKey;
-//        this.clientId = clientId;
-//    }
-
-//    @Inject
-//    public RequestBuilder(RequestProperties requestProperties){
-//        this.requestProperties = requestProperties;
-//    }
 
     public RequestSpecBuilder getRequestSpecBuilder() {
         requestSpecBuilder = new RequestSpecBuilder();
@@ -76,6 +50,11 @@ public class RequestBuilder implements Client {
 
     @Override
     public Response getRequest() {
-        return getResponseSpecification().get(requestProperties.getBaseUrl());
+        return getResponseSpecification().get(serverUrl + requestProperties.getUrlEndPoint());
+    }
+
+    @Override
+    public Response postRequest(){
+        return getResponseSpecification().post(serverUrl + requestProperties.getUrlEndPoint());
     }
 }

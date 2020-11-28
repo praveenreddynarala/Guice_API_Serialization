@@ -10,34 +10,12 @@ public class RequestProperties{
 
     private Map<String, String> reqHeaders = new HashMap<>();
     private String reqBody;
-    private String baseUrl;
+    private String urlEndPoint;
     private String userName;
     private String psw;
     private String token;
     private String secretKey;
     private String clientId;
-
-//    @Inject
-//    public RequestProperties(
-//        @Assisted Map<String, String> reqHeaders,
-//        @Assisted String reqBody,
-//        @Assisted String baseUrl,
-//        @Assisted String userName,
-//        @Assisted String psw,
-//        @Assisted String token,
-//        @Assisted String secretKey,
-//        @Assisted String clientId
-//
-//    ){
-//        this.reqHeaders = reqHeaders;
-//        this.reqBody = reqBody;
-//        this.baseUrl = baseUrl;
-//        this.userName = userName;
-//        this.psw = psw;
-//        this.token = token;
-//        this.secretKey = secretKey;
-//        this.clientId = clientId;
-//    }
 
     public Map<String, String> getReqHeaders() {
         return reqHeaders;
@@ -69,12 +47,12 @@ public class RequestProperties{
         this.reqBody = reqBody.trim();
     }
 
-    public String getBaseUrl() {
-        return baseUrl;
+    public String getUrlEndPoint() {
+        return urlEndPoint;
     }
 
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
+    public void setUrlEndPoint(String urlEndPoint) {
+        this.urlEndPoint = urlEndPoint;
     }
 
     public String getUserName() {

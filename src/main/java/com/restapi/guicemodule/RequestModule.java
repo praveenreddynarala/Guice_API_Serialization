@@ -1,6 +1,7 @@
 package com.restapi.guicemodule;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.name.Names;
 import com.restapi.createclient.Client;
 import com.restapi.requestbuilder.RequestBuilder;
 
@@ -12,6 +13,9 @@ public class RequestModule extends AbstractModule {
 //        .implement(Client.class, RequestBuilder.class)
 //        .build(RequestPropertiesFactory.class));
 
+        bind(String.class)
+                .annotatedWith(Names.named("Server Url"))
+        .toInstance("https://reqres.in");
         bind(Client.class).to(RequestBuilder.class);
     }
 
