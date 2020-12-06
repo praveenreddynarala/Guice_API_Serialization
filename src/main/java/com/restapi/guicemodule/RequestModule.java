@@ -2,8 +2,8 @@ package com.restapi.guicemodule;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
-import com.restapi.createclient.Client;
-import com.restapi.requestbuilder.RequestBuilder;
+import com.restapi.interfaces.Client;
+import com.restapi.builder.RequestBuilder;
 
 public class RequestModule extends AbstractModule {
 

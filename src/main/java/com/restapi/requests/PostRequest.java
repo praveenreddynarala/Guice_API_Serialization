@@ -1,6 +1,6 @@
 package com.restapi.requests;
 
-import com.restapi.createclient.Client;
+import com.restapi.interfaces.Client;
 import com.restapi.properties.RequestProperties;
 import io.restassured.response.Response;
 

@@ -3,7 +3,7 @@ package com.expose.pojo;
 import com.google.gson.annotations.Expose;
 
 /**
- *Expose annotation will help to expose properties in Serialization and Deserialization
+ *Expose annotation will help to expose properties in DataSerialization and Deserialization
  * Expose annotation will replace setting properties to null values for hiding
  */
 public class ExposeUserProperties {

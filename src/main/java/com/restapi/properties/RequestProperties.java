@@ -1,8 +1,5 @@
 package com.restapi.properties;
 
-import com.google.inject.assistedinject.Assisted;
-
-import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.Map;
 

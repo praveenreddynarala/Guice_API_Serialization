@@ -1,5 +1,7 @@
-package com.restapi.requestbuilder;
+package com.restapi.builder;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import com.restapi.interfaces.Client;
 import static io.restassured.RestAssured.given;
 
@@ -8,13 +10,11 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 
 public class RequestBuilder implements Client {
 
-    @Inject @Named("Server Url")
-    private String serverUrl;
+    @Inject(optional=true) @Named("Server Url")
+    private String serverUrl = "";
     private RequestSpecBuilder requestSpecBuilder;
     private RequestSpecification requestSpecification;
 
@@ -22,6 +22,7 @@ public class RequestBuilder implements Client {
 
     public RequestSpecBuilder getRequestSpecBuilder() {
         requestSpecBuilder = new RequestSpecBuilder();
+        requestSpecBuilder.setBaseUri(requestProperties.getBaseUrl());
 
         requestSpecBuilder.addHeaders(this.requestProperties.getReqHeaders());
         if(this.requestProperties.getReqBody()!= null)
@@ -50,7 +51,9 @@ public class RequestBuilder implements Client {
 
     @Override
     public Response getRequest() {
-        return getResponseSpecification().get(serverUrl + requestProperties.getUrlEndPoint());
+        if(!requestProperties.getBaseUrl().isEmpty() || requestProperties.getBaseUrl() != null)
+            serverUrl = requestProperties.getBaseUrl();
+        return getResponseSpecification().get(requestProperties.getUrlEndPoint());
     }
 
     @Override

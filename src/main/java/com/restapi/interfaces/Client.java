@@ -1,8 +1,8 @@
-package com.restapi.createclient;
+package com.restapi.interfaces;
 
 import com.google.inject.ImplementedBy;
 import com.restapi.properties.RequestProperties;
-import com.restapi.requestbuilder.RequestBuilder;
+import com.restapi.builder.RequestBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
