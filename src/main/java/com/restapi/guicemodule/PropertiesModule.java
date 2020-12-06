@@ -4,9 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Properties;
-import java.util.Set;
 
 public class PropertiesModule extends AbstractModule {
 

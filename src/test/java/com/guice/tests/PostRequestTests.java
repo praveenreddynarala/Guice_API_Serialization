@@ -24,10 +24,6 @@ public class PostRequestTests {
         requestProperties = new RequestProperties();
         Injector injector = Guice.createInjector(new RequestModule(), new PropertiesModule());
         request = injector.getInstance(PostRequest.class);
-    }
-
-    @BeforeEach
-    void setProperties(){
         requestProperties.setBaseUrl(request.getBaseUrl());
         requestProperties.setReqHeaders(request.getContentType());
     }

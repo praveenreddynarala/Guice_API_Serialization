@@ -18,11 +18,13 @@ public class TransientSerializationTest {
         );
 
         String jsonString = new GsonBuilder().serializeNulls().create().toJson(users);
+        System.out.println(jsonString);
     }
 
     private static void serialization() {
         String jsonString = "{\"name\":\"Praveen\",\"lastName\":\"Narala\",\"age\":null,\"isDeveloper\":false}";
 
         TransientSerialization users = new GsonBuilder().serializeNulls().create().fromJson(jsonString, TransientSerialization.class);
+        System.out.println(users);
     }
 }

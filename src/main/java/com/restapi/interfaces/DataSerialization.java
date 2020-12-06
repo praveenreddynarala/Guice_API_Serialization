@@ -5,8 +5,6 @@ import com.google.gson.reflect.TypeToken;
 import com.google.inject.ImplementedBy;
 import com.restapi.builder.SerializeBuilder;
 
-import java.io.IOException;
-
 @ImplementedBy(SerializeBuilder.class)
 public interface DataSerialization {
 

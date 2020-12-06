@@ -19,11 +19,13 @@ public class SerializedNamesTest {
         );
 
         String jsonString = new GsonBuilder().serializeNulls().create().toJson(users);
+        System.out.println(jsonString);
     }
 
     private static void serialization() {
         String jsonString = "{\"name\":\"Praveen\",\"last_name\":\"Narala\",\"age\":null,\"isDeveloper\":false}";
 
         Users users = new Gson().fromJson(jsonString, Users.class);
+        System.out.println(users);
     }
 }

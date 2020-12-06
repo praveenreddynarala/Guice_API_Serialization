@@ -3,7 +3,6 @@ package com.gson.tests;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.parsingnulls.pojo.Users;
-import groovy.json.JsonBuilder;
 
 public class ParsingNullValuesInJSON {
     public static void main(String[] arg){
@@ -15,6 +14,7 @@ public class ParsingNullValuesInJSON {
         String jsonString = "{\"name\":\"Praveen\",\"last_name\":\"Narala\",\"age\":null}";
 
         Users users = new Gson().fromJson(jsonString, Users.class);
+        System.out.println(users);
     }
 
     private static void serialization() {
@@ -26,5 +26,6 @@ public class ParsingNullValuesInJSON {
 
         Gson gson = new GsonBuilder().serializeNulls().create();
         String jsonString = gson.toJson(users);
+        System.out.println(jsonString);
     }
 }

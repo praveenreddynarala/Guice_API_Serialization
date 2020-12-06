@@ -15,7 +15,6 @@ import java.nio.charset.StandardCharsets;
 public class SerializeBuilder implements DataSerialization {
 
     private Gson gsonObj = null;
-    private BufferedReader bufferedReader;
 
     @Override
     public <E> E parseJSON(Class<E> klass, String fileName) {
